@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI English Coach</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <div class="brand">
+          <div class="brand-mark">EC</div>
+          <div>
+            <strong>AI English Coach</strong>
+            <span>Local learning desk</span>
+          </div>
+        </div>
+        <nav>
+          <button class="nav-item active" data-view="dashboard" type="button">Dashboard</button>
+          <button class="nav-item" data-view="lesson" type="button">Daily lesson</button>
+          <button class="nav-item" data-view="conversation" type="button">Conversation</button>
+          <button class="nav-item" data-view="vocabulary" type="button">Vocabulary</button>
+          <button class="nav-item" data-view="progress" type="button">Progress</button>
+        </nav>
+        <div class="profile-panel">
+          <span class="label">Current level</span>
+          <select id="levelSelect" aria-label="Current English level">
+            <option>A2</option>
+            <option selected>B1</option>
+            <option>B2</option>
+            <option>C1</option>
+          </select>
+        </div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Today's focus</p>
+            <h1>Speak naturally, notice mistakes, keep moving.</h1>
+          </div>
+          <button id="newLessonBtn" class="primary-action" type="button">New lesson</button>
+        </header>
+
+        <section id="dashboard" class="view active" aria-labelledby="dashboardTitle">
+          <h2 id="dashboardTitle">Dashboard</h2>
+          <div class="metrics-grid">
+            <article class="metric-card">
+              <span>Progress</span>
+              <strong id="progressPercent">42%</strong>
+              <div class="meter"><span id="progressBar"></span></div>
+            </article>
+            <article class="metric-card">
+              <span>Words learned</span>
+              <strong id="wordsCount">0</strong>
+              <small>stored locally</small>
+            </article>
+            <article class="metric-card">
+              <span>Learning streak</span>
+              <strong id="streakCount">1 day</strong>
+              <small>daily practice</small>
+            </article>
+            <article class="metric-card">
+              <span>Tasks done</span>
+              <strong id="tasksDone">0</strong>
+              <small>lesson steps</small>
+            </article>
+          </div>
+          <div class="split-layout">
+            <section class="panel">
+              <div class="panel-heading">
+                <h3>Today's goal</h3>
+                <button id="completeGoalBtn" type="button">Mark done</button>
+              </div>
+              <p id="dailyGoal">Use five new words in a short answer about your workday.</p>
+            </section>
+            <section class="panel">
+              <div class="panel-heading">
+                <h3>Frequent mistakes</h3>
+              </div>
+              <ul id="mistakeList" class="clean-list"></ul>
+            </section>
+          </div>
+        </section>
+
+        <section id="lesson" class="view" aria-labelledby="lessonTitle">
+          <div class="section-row">
+            <h2 id="lessonTitle">Daily lesson</h2>
+            <button id="saveLessonBtn" type="button">Save progress</button>
+          </div>
+          <div id="lessonSteps" class="lesson-grid"></div>
+        </section>
+
+        <section id="conversation" class="view" aria-labelledby="conversationTitle">
+          <h2 id="conversationTitle">Conversation mode</h2>
+          <div class="conversation-layout">
+            <div id="chatLog" class="chat-log" aria-live="polite"></div>
+            <form id="chatForm" class="chat-form">
+              <input id="chatInput" type="text" autocomplete="off" placeholder="Write your answer in English..." />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="vocabulary" class="view" aria-labelledby="vocabularyTitle">
+          <div class="section-row">
+            <h2 id="vocabularyTitle">Vocabulary manager</h2>
+            <button id="addWordBtn" type="button">Add word</button>
+          </div>
+          <div id="vocabularyList" class="vocab-list"></div>
+        </section>
+
+        <section id="progress" class="view" aria-labelledby="progressTitle">
+          <h2 id="progressTitle">Progress</h2>
+          <div class="progress-board">
+            <div>
+              <span class="label">Weekly activity</span>
+              <div id="weekBars" class="week-bars"></div>
+            </div>
+            <div>
+              <span class="label">Local memory</span>
+              <pre id="memoryPreview"></pre>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
